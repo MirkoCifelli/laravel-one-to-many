@@ -36,13 +36,14 @@
                                         <td>{{ $project->title }}</td>
                                         <td>{{ $project->slug }}</td>
                                         <td>
-                                        @if ($project->type != null)
-                                            <a href="{{ route('admin.types.show', ['type' => $project->type->id]) }}">
-                                                {{ $project->type->title }}
-                                            </a>
-                                        @else
-                                            -
-                                        @endif</td>
+                                            @if ($project->type != null)
+                                                <a href="{{ route('admin.types.show', ['type' => $project->type->slug]) }}">
+                                                    {{ $project->type->title }}
+                                                </a>
+                                            @else
+                                                -
+                                            @endif
+                                        </td>
                                         <td>{{ $project->created_at }}</td>
                                         <td>
                                             <a href="{{ route('admin.projects.show', ['project' => $project->slug]) }}"

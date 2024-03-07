@@ -25,7 +25,7 @@
                     <ul>
                         @foreach ($type->projects as $project)
                             <li>
-                                <a href="{{ route('admin.projects.show', ['project' => $project->id]) }}">
+                                <a href="{{ route('admin.projects.show', ['project' => $project->slug]) }}">
                                     {{ $project->title }}
                                 </a>
                             </li>
