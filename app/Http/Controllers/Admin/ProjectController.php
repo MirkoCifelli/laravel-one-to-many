@@ -15,6 +15,7 @@ use Illuminate\Support\Str;
 //Form Request
 use App\Http\Requests\StoreProjectRequest;
 use App\Http\Requests\UpdateProjectRequest;
+use Illuminate\Validation\ValidationData;
 
 class ProjectController extends Controller
 {
@@ -47,13 +48,14 @@ class ProjectController extends Controller
 
         $slug = Str::slug($validationData['title']);
       
-
+       
         // $project = Project::create($validationData);
 
         $project = Project::create([
             'title' => $validationData['title'],
             'slug' => $slug,
             'content'=> $validationData['content'],
+            'type_id'=>$validationData['type_id'],
         ]);
 
         return redirect()->route('admin.projects.show', ['project' => $project->slug]);
@@ -88,6 +90,7 @@ class ProjectController extends Controller
         $project = Project::where('slug', $slug)->firstOrFail();
         $slug = Str::slug($validationData['title']);
         $validationData['slug'] = $slug;
+        
         
         $project->updateOrFail($validationData);
         

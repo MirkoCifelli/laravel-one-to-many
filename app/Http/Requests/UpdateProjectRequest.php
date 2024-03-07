@@ -25,6 +25,7 @@ class UpdateProjectRequest extends FormRequest
             'title' => 'required|max:255',
             'slug' => 'required|max:255',
             'content' => 'required|max:255',
+            'type_id'=>'nullable',
         ];
     }
 }

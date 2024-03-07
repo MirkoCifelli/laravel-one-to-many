@@ -19,6 +19,7 @@
                         {{ $project->content }}
                     </p>
 
+
                     @if ($project->type != null)
                         <h2>
                             Categoria:
