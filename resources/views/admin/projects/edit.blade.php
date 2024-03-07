@@ -67,6 +67,24 @@
                         @enderror
                     </div>
 
+                    <div class="mb-3">
+                        <label for="type_id" class="form-label">Type</label>
+                        <select name="type_id" id="type_id" class="form-select">
+                            <option
+                                value=""
+                                {{ old('type_id') == null ? 'selected' : '' }}>
+                                Seleziona un type...
+                            </option>
+                            @foreach ($types as $type)
+                                <option
+                                {{ old('type_id', $project->type_id) == $type->id ? 'selected' : '' }}
+                                value="{{ $type->id }}">
+                                {{ $type->title }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
                     <div>
                         <button type="submit" class="btn btn-warning w-100">
                             Modifica

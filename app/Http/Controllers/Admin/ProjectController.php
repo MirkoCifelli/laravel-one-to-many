@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 
 //Models
 use App\Models\Project;
+use App\Models\Type;
 
 // Helpers
 use Illuminate\Support\Str;
@@ -31,7 +32,9 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        return view("admin.projects.create");
+        $types = Type::all();
+        return view("admin.projects.create",compact('types'));
+        
     }
 
     /**
@@ -70,8 +73,9 @@ class ProjectController extends Controller
      */
     public function edit(string $slug)
     {
+        $types = Type::all();
         $project = Project::where('slug', $slug)->firstOrFail();
-        return view('admin.projects.edit', compact('project'));
+        return view('admin.projects.edit', compact('project','types'));
     }
 
     /**

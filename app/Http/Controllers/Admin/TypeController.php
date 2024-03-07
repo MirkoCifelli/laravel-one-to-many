@@ -33,6 +33,7 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
+        
         $typeData = $request->validate([
             'title'=> 'required|string|'
         ]);
