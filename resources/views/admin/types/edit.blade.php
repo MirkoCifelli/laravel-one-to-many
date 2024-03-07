@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title', $ype->title . 'Edit')
+@section('page-title', $type->title . 'Edit')
 
 @section('main-content')
     <h1 class="text-center">
@@ -42,7 +42,7 @@
                                 {{ $message }}
                             </div>
                         @enderror
-                    </div> 
+                    </div>
 
                     <div>
                         <button type="submit" class="btn btn-warning w-100">

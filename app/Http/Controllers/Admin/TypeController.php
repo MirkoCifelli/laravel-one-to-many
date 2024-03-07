@@ -85,7 +85,7 @@ class TypeController extends Controller
             'slug' => $slug,
         ]);
 
-        return redirect()->route('admin.categories.show', ['type' => $type->id]);
+        return redirect()->route('admin.types.show', ['type' => $type->slug]);
     }
 
     /**
