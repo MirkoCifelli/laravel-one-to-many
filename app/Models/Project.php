@@ -20,7 +20,7 @@ class Project extends Model
     /*
         Relationships
     */
-    public function category()
+    public function type()
     {
         return $this->belongsTo(Type::class);
     }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title', 'Tutti i Project')
+@section('page-title', 'Tutti i Type')
 
 @section('main-content')
     <div class="row">
@@ -8,11 +8,11 @@
             <div class="card">
                 <div class="card-body">
                     <h1 class="text-center text-success">
-                        Tutti i Project
+                        Tutti i type
                     </h1>
 
                     <div class="mb-4">
-                        <a href="{{ route('admin.projects.create') }}" class="btn btn-success w-100 fs-5">
+                        <a href="{{ route('admin.types.create') }}" class="btn btn-success w-100 fs-5">
                             + Aggiungi
                         </a>
                     </div>
@@ -24,39 +24,30 @@
                                     <th scope="col">#</th>
                                     <th scope="col">Title</th>
                                     <th scope="col">Slug</th>
-                                    <th scope="col">Type</th>
                                     <th scope="col">Created at</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($projects as $project)
+                                @foreach ($types as $type)
                                     <tr>
-                                        <th scope="row">{{ $project->id }}</th>
-                                        <td>{{ $project->title }}</td>
-                                        <td>{{ $project->slug }}</td>
+                                        <th scope="row">{{ $type->id }}</th>
+                                        <td>{{ $type->title }}</td>
+                                        <td>{{ $type->slug }}</td>
+                                        <td>{{ $type->created_at }}</td>
                                         <td>
-                                        @if ($project->type != null)
-                                            <a href="{{ route('admin.types.show', ['type' => $project->type->id]) }}">
-                                                {{ $project->type->title }}
-                                            </a>
-                                        @else
-                                            -
-                                        @endif</td>
-                                        <td>{{ $project->created_at }}</td>
-                                        <td>
-                                            <a href="{{ route('admin.projects.show', ['project' => $project->slug]) }}"
+                                            <a href="{{ route('admin.types.show', ['type' => $type->slug]) }}"
                                                 class="btn btn-xs btn-primary">
                                                 Show
                                             </a>
-                                            <a href="{{ route('admin.projects.edit', ['project' => $project->slug]) }}"
+                                            <a href="{{ route('admin.types.edit', ['type' => $type->slug]) }}"
                                                 class="btn btn-warning my-2">
                                                 Modifica
                                             </a>
                                             <form
                                                 onsubmit="return confirm('Sei sicuro di voler eliminare questo elemento');"
                                                 class="my-2 d-inline-block"
-                                                action="{{ route('admin.projects.destroy', ['project' => $project->slug]) }}"
+                                                action="{{ route('admin.types.destroy', ['type' => $type->slug]) }}"
                                                 method="POST">
                                                 @csrf
                                                 @method('DELETE')
