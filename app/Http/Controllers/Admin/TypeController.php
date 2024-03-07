@@ -44,7 +44,7 @@ class TypeController extends Controller
             'slug' => $slug,
         ]);
 
-        return redirect()->route('admin.types.show', ['type' => $type->id]);
+        return redirect()->route('admin.types.show', ['type' => $type->slug]);
     }
 
     /**
@@ -63,8 +63,9 @@ class TypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Type $type)
+    public function edit(string $slug)
     {
+        $type = Type::where('slug', $slug)->firstOrFail();
         return view('admin.types.edit', compact('type'));
     }
 
@@ -90,8 +91,9 @@ class TypeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Type $type)
+    public function destroy(string $slug)
     {
+        $type = Type::where('slug', $slug)->firstOrFail();
         $type-> delete();
         return redirect()->route('admin.types.index');
     }
