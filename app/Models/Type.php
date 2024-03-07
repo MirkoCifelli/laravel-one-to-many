@@ -5,23 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Project extends Model
+class Type extends Model
 {
     use HasFactory;
-
-    protected $fillable = [
-        "title",
-        "slug",
-        'content',
-        'type_id'
+    protected $fillable=[
+        'title',
+        'slug'
     ];
 
 
+    
     /*
         Relationships
     */
-    public function category()
+    public function posts()
     {
-        return $this->belongsTo(Type::class);
+        return $this->hasMany(Project::class);
     }
 }
